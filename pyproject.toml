@@ -1,0 +1,57 @@
+[project]
+name = "graph_imprinting"
+version = "0.1.0"
+description = ""
+requires-python = ">=3.11,<3.14"
+dependencies = ["black>=24.0",
+                "ruff>=0.4.0",
+                "mypy>=1.8.0",
+                "ipykernel",
+                "pylance",
+                "torch (==2.8.0)",
+                "numpy (>=2.3.4,<3.0.0)",
+                "matplotlib (>=3.10.7,<4.0.0)",
+                "torch-geometric (>=2.7.0,<3.0.0)",
+                "pyg-lib (>=0.5.0,<0.6.0)",
+                "torch-sparse (>=0.6.18,<0.7.0)",
+                "torch-cluster (>=1.6.3,<2.0.0)",
+                "torch-spline-conv (>=1.2.2,<2.0.0)",
+                "torch-scatter (>=2.1.2,<3.0.0)",
+                "pyqt6 (>=6.10.0,<7.0.0)"]
+
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+include = '\.pyi?$'
+
+[tool.ruff]
+select = ["E", "F", "W", "I", "B", "UP", "RUF"]
+ignore = []
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.isort]
+known-first-party = ["graph_imprinting"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+ignore_missing_imports = true
+show_error_codes = true
+disallow_untyped_defs = true
+check_untyped_defs = true
+
+[[tool.poetry.source]]
+name = "torch-wheels"
+url = "https://data.pyg.org/whl/torch-2.8.0+cpu.html"
+priority = "supplemental"
+[tool.poetry.dependencies]
+pyg-lib = {source = "torch-wheels"}
+torch-sparse = {source = "torch-wheels"}
+torch-cluster = {source = "torch-wheels"}
+torch-spline-conv = {source = "torch-wheels"}
+torch-scatter = {source = "torch-wheels"}
