@@ -1,0 +1,19 @@
+
+overwrite: true
+hidden: hidden
+nodes:
+  hidden:
+    node_builder:
+      _target_: anemoi.graphs.nodes.TriNodes
+      resolution: 5
+edges:
+- source_name: hidden
+  target_name: hidden
+  edge_builders:
+  - _target_: anemoi.graphs.edges.MultiScaleEdges
+    x_hops: 1
+    scale_resolutions: ${nodes.hidden.node_builder.resolution}
+    # scale_resolutions: [5] # TODO check
+    source_mask_attr_name: null
+    target_mask_attr_name: null
+  # attributes: ${graph.attributes.edges}
